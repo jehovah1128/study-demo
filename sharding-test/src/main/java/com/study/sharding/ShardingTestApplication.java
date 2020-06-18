@@ -1,13 +1,13 @@
-package com.study.demo;
+package com.study.sharding;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StudyDemoApplication {
+public class ShardingTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StudyDemoApplication.class, args);
+        SpringApplication.run(ShardingTestApplication.class, args);
     }
 
 }
