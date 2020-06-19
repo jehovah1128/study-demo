@@ -14,8 +14,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.daoli</groupId>
-            <artifactId>daoli-entity</artifactId>
+            <groupId>com.study</groupId>
+            <artifactId>study-entity</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
