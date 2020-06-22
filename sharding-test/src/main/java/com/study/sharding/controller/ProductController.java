@@ -3,10 +3,7 @@ package com.study.sharding.controller;
 import com.study.entity.Product;
 import com.study.sharding.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -18,7 +15,7 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/info")
-    public Product getProductInfo(Long productId){
+    public Product getProductInfo(@RequestHeader("productId") Long productId){
         return productService.getProductById(productId);
     }
 

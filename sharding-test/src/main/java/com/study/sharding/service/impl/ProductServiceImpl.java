@@ -59,6 +59,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductById(Long id) {
-        return productMapper.selectById(id);
+        synchronized (id){
+            try {
+                log.info("begin do select id:{}",System.identityHashCode(id));
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            log.info("end do select");
+            return productMapper.selectById(id);
+        }
     }
 }
