@@ -1,0 +1,11 @@
+mybatis:
+  mapper-locations: classpath:com/study/single/mapper/*.xml
+  type-aliases-package: com.study.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

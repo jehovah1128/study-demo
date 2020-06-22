@@ -1,8 +1,8 @@
 package com.study.sharding.service.impl;
 
-import com.study.common.NameUtil;
-import com.study.common.PhoneUtil;
-import com.study.common.SnowFlakeUtil;
+import com.study.common.util.NameUtil;
+import com.study.common.util.PhoneUtil;
+import com.study.common.util.SnowFlakeUtil;
 import com.study.entity.Balance;
 import com.study.entity.User;
 import com.study.sharding.mapper.BalanceMapper;

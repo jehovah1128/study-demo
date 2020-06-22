@@ -1,0 +1,16 @@
+server:
+  port: 9997
+  max-http-header-size: 0
+  tomcat:
+    uri-encoding: UTF-8
+    max-http-post-size: 0
+  servlet:
+    path: /
+logging:
+  path: /java-log/study/single
+
+spring:
+  application:
+    name: single-data
+  profiles:
+    include: data,mabatis

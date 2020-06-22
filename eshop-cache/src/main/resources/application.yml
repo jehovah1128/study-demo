@@ -1,0 +1,14 @@
+server:
+  port: 9998
+  max-http-header-size: 0
+  tomcat:
+    uri-encoding: UTF-8
+    max-http-post-size: 0
+  servlet:
+    path: /
+logging:
+  path: /java-log/study/cache
+
+spring:
+  application:
+    name: eshop-cache

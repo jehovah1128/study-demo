@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.study.sharding.mapper")
 @ComponentScan("com.study")
 @EnableTransactionManagement
-@PropertySource("classpath:application-sharding.yml")
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class ShardingTestApplication {
 

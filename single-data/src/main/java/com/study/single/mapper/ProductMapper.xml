@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.study.single.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.study.entity.Product">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DECIMAL"/>
+        <result column="picture_list" property="pictureList" jdbcType="VARCHAR"/>
+        <result column="specification" property="specification" jdbcType="VARCHAR"/>
+        <result column="service" property="service" jdbcType="VARCHAR"/>
+        <result column="color" property="color" jdbcType="VARCHAR"/>
+        <result column="size" property="size" jdbcType="VARCHAR"/>
+        <result column="shop_id" property="shopId" jdbcType="BIGINT"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, price,picture_list,specification,service,color,size,shop_id,modify_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <insert id="insert" parameterType="com.study.entity.Product">
+        insert into product (id, name, price,picture_list,specification,service,color,size,shop_id,modify_time,create_time)
+        values ( #{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
+        #{pictureList,jdbcType=VARCHAR}, #{specification,jdbcType=VARCHAR}, #{service,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR},
+        #{shopId,jdbcType=BIGINT}, NOW(),NOW())
+    </insert>
+    <update id="updateProduct">
+        UPDATE product
+            SET
+                <if test="name != null">
+                    name =  #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="price != null">
+                    price =  #{price,jdbcType=DECIMAL},
+                </if>
+                <if test="pictureList != null">
+                    picture_list =  #{pictureList,jdbcType=VARCHAR},
+                </if>
+                <if test="specification != null">
+                    specification =  #{specification,jdbcType=VARCHAR},
+                </if>
+                <if test="service != null">
+                    service =  #{service,jdbcType=VARCHAR},
+                </if>
+                <if test="color != null">
+                    color =  #{color,jdbcType=VARCHAR},
+                </if>
+                <if test="size != null">
+                    size =  #{size,jdbcType=VARCHAR},
+                </if>
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

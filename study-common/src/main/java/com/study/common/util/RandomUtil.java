@@ -1,4 +1,4 @@
-package com.study.common;
+package com.study.common.util;
 
 import java.util.ArrayList;
 import java.util.List;
