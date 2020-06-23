@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.sharding.mapper.ProvinceCityDistrictMapper">
+    <resultMap id="BaseResultMap" type="com.study.entity.ProvinceCityDistrict">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="pid" jdbcType="BIGINT" property="pid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, pid, name
+    </sql>
+
+    <select id="getProvinceCityDistrictByPid" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from province_city_district
+        where pid = #{pid,jdbcType=BIGINT}
+    </select>
+    <select id="getProvinceCityDistrictAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from province_city_district
+    </select>
+    <select id="getProvinceCityDistrictString" resultType="java.lang.String">
+        SELECT GROUP_CONCAT(name) FROM province_city_district WHERE
+        id IN(#{provinceId},#{cityId},#{districtId})
+    </select>
+</mapper>

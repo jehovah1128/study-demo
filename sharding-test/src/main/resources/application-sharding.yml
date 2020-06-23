@@ -67,7 +67,7 @@ spring:
               algorithm-expression: ds-$->{id % 2}
 
       binding-tables: user,balance,product
-
+      default-data-source-name: ds-0
       default-database-strategy:
         inline:
           sharding-column: id
@@ -82,4 +82,4 @@ spring:
           slave-data-source-names: master-1-slave-0
     props:
       sql:
-        show: false
+        show: true

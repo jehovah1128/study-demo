@@ -1,11 +1,14 @@
 package com.study.sharding.controller;
 
 import com.study.entity.Product;
+import com.study.entity.ProvinceCityDistrict;
 import com.study.sharding.service.ProductService;
+import com.study.sharding.service.ProvinceCityDistrictService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -29,4 +32,6 @@ public class ProductController {
     public boolean addProduct(Long id,String name,String price,String[] pictures,String specification,String service,String[] colors,String size){
         return productService.updateProduct(id,name, price, pictures, specification, service, colors, size);
     }
+
+
 }
