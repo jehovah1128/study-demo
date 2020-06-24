@@ -5,6 +5,7 @@ import com.study.common.util.SnowFlakeUtil;
 import com.study.entity.Product;
 import com.study.sharding.mapper.ProductMapper;
 import com.study.sharding.service.ProductService;
+import com.study.vo.ProductVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -58,16 +59,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(Long id) {
-        synchronized (id){
-            try {
-                log.info("begin do select id:{}",System.identityHashCode(id));
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            log.info("end do select");
-            return productMapper.selectById(id);
-        }
+    public ProductVo getProductById(Long id) {
+            return productMapper.selectVoById(id);
     }
 }

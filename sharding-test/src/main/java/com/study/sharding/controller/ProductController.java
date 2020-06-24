@@ -4,6 +4,7 @@ import com.study.entity.Product;
 import com.study.entity.ProvinceCityDistrict;
 import com.study.sharding.service.ProductService;
 import com.study.sharding.service.ProvinceCityDistrictService;
+import com.study.vo.ProductVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/info")
-    public Product getProductInfo(@RequestHeader("productId") Long productId){
+    public ProductVo getProductInfo(Long productId){
         return productService.getProductById(productId);
     }
 

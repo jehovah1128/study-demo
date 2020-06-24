@@ -1,4 +1,4 @@
-package com.study.entity;
+package com.study.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product implements Serializable {
+public class ProductVo implements Serializable {
+
     private Long id;
 
     private String name;
@@ -32,9 +33,15 @@ public class Product implements Serializable {
 
     private Long shopId;
 
+    private String shopName;
+
     private Long cityId;
 
+    private String cityName;
+
     private Long brandId;
+
+    private String brandName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")

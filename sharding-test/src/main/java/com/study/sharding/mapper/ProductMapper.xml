@@ -11,11 +11,13 @@
         <result column="color" property="color" jdbcType="VARCHAR"/>
         <result column="size" property="size" jdbcType="VARCHAR"/>
         <result column="shop_id" property="shopId" jdbcType="BIGINT"/>
+        <result column="city_id" property="cityId" jdbcType="BIGINT"/>
+        <result column="brand_id" property="brandId" jdbcType="BIGINT"/>
         <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, name, price,picture_list,specification,service,color,size,shop_id,modify_time
+        id, name, price,picture_list,specification,service,color,size,shop_id,city_id,brand_id,modify_time
     </sql>
 
     <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -24,12 +26,18 @@
         from product
         where id = #{id,jdbcType=BIGINT}
     </select>
+    <select id="selectVoById" resultType="com.study.vo.ProductVo" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+        where id = #{id,jdbcType=BIGINT}
+    </select>
 
     <insert id="insert" parameterType="com.study.entity.Product">
-        insert into product (id, name, price,picture_list,specification,service,color,size,shop_id,modify_time,create_time)
+        insert into product (id, name, price,picture_list,specification,service,color,size,shop_id,city_id,brand_id,modify_time,create_time)
         values ( #{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
         #{pictureList,jdbcType=VARCHAR}, #{specification,jdbcType=VARCHAR}, #{service,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR},
-        #{shopId,jdbcType=BIGINT}, NOW(),NOW())
+        #{shopId,jdbcType=BIGINT},#{cityId,jdbcType=BIGINT},#{brandId,jdbcType=BIGINT}, NOW(),NOW())
     </insert>
     <update id="updateProduct">
         UPDATE product

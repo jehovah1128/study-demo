@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.sharding.mapper.BrandMapper">
+
+    <sql id="Base_Column_List">
+        id, name, update_time
+    </sql>
+
+    <select id="getBrandById" parameterType="java.lang.Long" resultType="com.study.entity.Brand">
+        select
+        <include refid="Base_Column_List"/>
+        from brand
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+</mapper>

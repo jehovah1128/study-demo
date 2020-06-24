@@ -29,7 +29,10 @@ public class HttpClientUtil {
                 /**读取服务器返回过来的json字符串数据**/
                 String strResult = EntityUtils.toString(response.getEntity(),"UTF-8");
                 return strResult;
-            }
+            }else{
+				String strResult = EntityUtils.toString(response.getEntity(),"UTF-8");
+				throw new Exception(response.getStatusLine().getStatusCode()+""+strResult);
+			}
 
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
