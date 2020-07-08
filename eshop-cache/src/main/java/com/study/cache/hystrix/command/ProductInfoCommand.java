@@ -6,7 +6,9 @@ import com.netflix.hystrix.strategy.concurrency.HystrixConcurrencyStrategyDefaul
 import com.study.common.util.HttpClientUtil;
 import com.study.entity.Product;
 import com.study.vo.ProductVo;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ProductInfoCommand extends HystrixCommand<ProductVo> {
 
     private Long productId;
@@ -17,12 +19,14 @@ public class ProductInfoCommand extends HystrixCommand<ProductVo> {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductInfoGroup"))
                 .andCommandKey(COMMAND_KEY)
                 .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
-                        .withRequestCacheEnabled(true)
+                        .withRequestCacheEnabled(false)
+                        .withExecutionTimeoutInMilliseconds(200)
                 )
                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("getProductInfoPool"))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
-                        .withCoreSize(10)
+                        .withCoreSize(15)
                         .withMaxQueueSize(20)
+                        .withQueueSizeRejectionThreshold(10)
                 )
         );
         this.productId = productId;
@@ -30,10 +34,19 @@ public class ProductInfoCommand extends HystrixCommand<ProductVo> {
 
     @Override
     protected ProductVo run() throws Exception {
+        log.info("do run");
+//        Thread.sleep(2000);
         String url = "http://127.0.0.1:9999/product/info?productId=" + productId;
         String result = HttpClientUtil.doGet(url);
         ProductVo product = JSON.parseObject(result, ProductVo.class);
         return product;
+    }
+
+    @Override
+    protected ProductVo getFallback() {
+        ProductVo vo = new ProductVo();
+        vo.setName("限流商品");
+        return vo;
     }
 
     @Override

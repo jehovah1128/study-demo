@@ -36,7 +36,7 @@
     </appender>
     
     <!--SQL打印-->
-    <logger name="com.daoli.erp.mapper" level="INFO"/>
+    <logger name="com.study.sharding.mapper" level="INFO"/>
 
     <!--日志输出级别-->
     <root level="INFO">

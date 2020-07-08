@@ -1,5 +1,6 @@
 package com.study.sharding.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.study.entity.Product;
 import com.study.entity.ProvinceCityDistrict;
 import com.study.sharding.service.ProductService;
@@ -20,7 +21,9 @@ public class ProductController {
 
     @RequestMapping("/info")
     public ProductVo getProductInfo(Long productId){
-        return productService.getProductById(productId);
+        ProductVo vo = productService.getProductById(productId);
+        log.info("get vo:{}", JSONObject.toJSONString(vo));
+        return vo;
     }
 
     @PostMapping(value = "/add")

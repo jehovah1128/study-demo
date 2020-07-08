@@ -1,6 +1,7 @@
 package com.study.cache.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
 import com.study.cache.hystrix.command.BrandInfoCommand;
 import com.study.cache.hystrix.command.ProductInfoCommand;
@@ -37,6 +38,12 @@ public class CacheController {
         if (null != brand)
             product.setBrandName(brand.getName());
         return product;
+    }
+    @RequestMapping("/cache/brand")
+    public Brand getBrandInfo(Long brandId){
+        BrandInfoCommand brandInfoCommand = new BrandInfoCommand(brandId);
+        Brand brand = brandInfoCommand.execute();
+        return brand;
     }
 
     @RequestMapping("/cache/getInfos")

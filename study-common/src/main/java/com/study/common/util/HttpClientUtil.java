@@ -30,8 +30,8 @@ public class HttpClientUtil {
                 String strResult = EntityUtils.toString(response.getEntity(),"UTF-8");
                 return strResult;
             }else{
-				String strResult = EntityUtils.toString(response.getEntity(),"UTF-8");
-				throw new Exception(response.getStatusLine().getStatusCode()+""+strResult);
+//				String strResult = EntityUtils.toString(response.getEntity(),"UTF-8");
+//				throw new Exception(response.getStatusLine().getStatusCode()+""+strResult);
 			}
 
 		} catch (Exception e) {

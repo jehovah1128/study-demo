@@ -60,6 +60,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductVo getProductById(Long id) {
-            return productMapper.selectVoById(id);
+        return productMapper.selectVoById(id);
     }
 }

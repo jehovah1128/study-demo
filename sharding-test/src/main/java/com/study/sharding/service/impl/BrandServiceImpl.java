@@ -14,10 +14,10 @@ public class BrandServiceImpl implements BrandService {
     private BrandMapper brandMapper;
     @Override
     public Brand getBrandById(Long id) throws Exception {
-        int a = 0;
-        if(RandomUtil.getLong()%2 == 0){
-            int b = 10/a;
-        }
+//        int a = 0;
+//        if(RandomUtil.getLong()%2 == 0){
+//            int b = 10/a;
+//        }
         return brandMapper.getBrandById(id);
     }
 }
